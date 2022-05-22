@@ -1,10 +1,14 @@
-use std::path::{Path, PathBuf};
+use std::{
+    env,
+    path::{Path, PathBuf},
+};
 
 use cxx_build::CFG;
 use glob::glob;
 
 fn main() {
-    let inc_dir = Path::new("tbb").join("include").canonicalize().unwrap();
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+    let inc_dir = Path::new(&manifest_dir).join("tbb").join("include");
     let srcs: Vec<PathBuf> = glob("tbb/src/tbb/*.cpp")
         .unwrap()
         .map(|x| x.unwrap())
