@@ -1,0 +1,17 @@
+[package]
+name = "tbb-sys"
+version = "1.0.0+2021.5.0"
+edition = "2021"
+description = "Intel Threading Building Blocks"
+license = "Apache-2.0"
+homepage = "https://oneapi-src.github.io/oneTBB/"
+repository = "https://github.com/risc0/tbb-sys"
+links = "tbb"
+
+[dependencies]
+cxx = "1.0"
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }
+cxx-build = "1.0"
+glob = "0.3"
