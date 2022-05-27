@@ -8,9 +8,6 @@ homepage = "https://oneapi-src.github.io/oneTBB/"
 repository = "https://github.com/risc0/tbb-sys"
 links = "tbb"
 
-[dependencies]
-cxx = "1.0"
-
 [build-dependencies]
-cxx-build = "1.0"
+cc = { version = "1.0", features = ["parallel"] }
 glob = "0.3"

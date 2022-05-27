@@ -3,7 +3,6 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use cxx_build::CFG;
 use glob::glob;
 
 fn main() {
@@ -14,10 +13,9 @@ fn main() {
         .map(|x| x.unwrap())
         .collect();
 
-    CFG.exported_header_dirs = vec![&inc_dir];
-
-    let mut build = cxx_build::bridge("src/lib.rs");
+    let mut build = cc::Build::new();
     build
+        .cpp(true)
         .files(srcs)
         .include(&inc_dir)
         .define("__TBB_BUILD", None)
@@ -46,4 +44,6 @@ fn main() {
     }
 
     build.compile("tbb");
+
+    println!("cargo:include={}", inc_dir.to_str().unwrap());
 }
