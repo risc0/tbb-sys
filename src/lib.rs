@@ -1,2 +1,1 @@
-#[cxx::bridge]
-mod ffi {}
+// This file is intentionally empty
